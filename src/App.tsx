@@ -1,24 +1,26 @@
-import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+// routing
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import Daily1 from './Pages/Daily1/Daily1';
+import NotFound from './Pages/NotFound/NotFound';
+import IPUtility from './IPmanager/IPUtility';
 
 function App() {
+  // get ip
+  IPUtility();
+  
+  
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Router>
+        <Routes>
+          <Route path='/Daily1' element={<Daily1 />}/>
+
+
+
+          <Route path="*"  element={<NotFound />}/>
+        </Routes>
+      </Router>
     </div>
   );
 }

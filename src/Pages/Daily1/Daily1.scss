@@ -1,0 +1,63 @@
+.Daily1-section {
+  min-width: 100vw;
+  min-height: 100vh;
+  background-color: rgb(231, 221, 208);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.main-wrapper {
+  min-width: 30vw;
+  min-height: 40vh;
+  border-radius: 2rem;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.content-containers {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+}
+.profile-image-container {
+  border-radius: 50%;
+  border: 5px solid gold;
+}
+#content-containers-3rd {
+  flex: 2;
+}
+.content-containers1 {
+  min-width: 25vw;
+  justify-content: flex-end;
+}
+.location-content-container {
+  // margin: 0 0.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.location-content-container div > * {
+  margin: 0 0.7rem;
+}
+.location-content-container div {
+  min-width: 10vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.location-content-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+@media screen and (max-width: 720px) {
+  .main-wrapper {
+    min-width: 60vw;
+    min-height: 50vh;
+  }
+}
