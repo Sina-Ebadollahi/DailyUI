@@ -5,10 +5,10 @@ import { rootListType } from '../../ReduxManager/ReduxMain'
 // mui components
 import ListIcon from '@mui/material/Icon/';
 import { Avatar, CircularProgress,  } from '@mui/material/'
-import { DragHandleOutlined, LocationOn, Person } from '@material-ui/icons';
+import { DragHandleOutlined, LocationOn, Person, PersonOutline } from '@material-ui/icons';
 import { Button } from '@material-ui/core';
 // hooks
-import React, { useEffect, useState, useReducer } from 'react'
+import React, { useEffect, useState, useReducer, Component } from 'react'
 import useFetch, { fetchedDataType } from '../../Hooks/useFetch';
 export default function Daily1() {
 
@@ -40,9 +40,14 @@ export default function Daily1() {
         
       })
     },[githubUserName])
-    
+    function handleGitHubUserNameChange(finalText:string): void{
+      if(finalText != ''){
+        setGithubUserName(finalText);
+      }
+    }
   return (
     <section className='Daily1-section'>
+      {!isPending && <InputGithubUserName handleGitHubUserNameChange={handleGitHubUserNameChange} />}
       {isPending && 
       <div className="main-wrapper">
         <CircularProgress sx={{width: 100, heigth: 100}} />
@@ -64,7 +69,7 @@ export default function Daily1() {
               {dataReducer.name && <h2>{dataReducer.name}</h2>}
               </div>
             <div><LocationOn  />
-            {dataReducer.location && <h5>{dataReducer.location}, Iran</h5>}</div>
+            {dataReducer.location && <h5>{dataReducer.location}</h5>}</div>
           </div>
         </div>
         <div className="content-containers content-containers4">
@@ -76,5 +81,18 @@ export default function Daily1() {
         </div>
       </div>}
     </section>
+  )
+}
+const InputGithubUserName = ({handleGitHubUserNameChange}: {handleGitHubUserNameChange: (finalText: string) => void}): any => {
+  const [inputText, setInputText] = useState<string>('');
+  return(
+    <div onKeyDown={(e) => {
+      if(e.key === 'Enter'){
+        handleGitHubUserNameChange(inputText)
+      }
+    }} className="inp-wrapper">
+      <input onChange={(e) => setInputText(e.currentTarget.value)} type="text" placeholder='Github Username' />
+      <PersonOutline width='50px' height='50px' onClick={() => handleGitHubUserNameChange(inputText)} />
+    </div>
   )
 }

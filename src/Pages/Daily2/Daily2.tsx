@@ -7,7 +7,7 @@ const MainSectionDaily2 = styled.section`
     justify-content: center;
     align-items: center;
 `
-const 
+// const 
 export default function Daily2() {
     
   return (

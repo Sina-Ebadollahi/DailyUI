@@ -3,6 +3,7 @@
   min-height: 100vh;
   background-color: rgb(231, 221, 208);
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 }
@@ -54,6 +55,21 @@
   display: flex;
   justify-content: center;
   align-items: center;
+}
+.inp-wrapper {
+  margin-bottom: 5rem;
+  min-width: 20vw;
+  min-height: 10vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.inp-wrapper input {
+  width: 100%;
+  height: 100%;
+  padding: 1rem 0;
+  text-align: center;
+  font-size: 2rem;
 }
 @media screen and (max-width: 720px) {
   .main-wrapper {
