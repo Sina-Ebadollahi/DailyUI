@@ -1,5 +1,38 @@
-import React from 'react'
+import { Button } from '@mui/material';
+import { NavigateFunction, useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
+const offersData = [
+  {
+    productID: 0,
+    texts: [
+      'https://www.zilliondesigns.com/images/portfolio/telecommunication-networking-company/untitled-1_29-01.png',
+      'Ice Mobile 10GB',
+      'Up to 100Mbit/s',
+      '299,-',
+      '/month',
+    ]
+  },
+  {
+    productID: 1,
+    texts: [
+      '',
+      'Telia Mobil 15GB',
+      'Unlimited Calls, SMS and MMS',
+      '953,-',
+      '/month',
+    ]
+  },
+  {
+    productID: 2,
+    texts: [
+      '',
+      'Telenor Next Fast',
+      'Up to 100Mbit/s',
+      '1028,-',
+      '/month',
+    ]
+  },
+]
 const MainSectionDaily2 = styled.section`
   background-color: rgb(252, 250, 250);
     min-width: 100vw;
@@ -65,8 +98,73 @@ const OfferWrapper = styled.div`
     min-width: 60vw;
   }
 `
+const OfferContainer = styled.div`
+  min-width: 20vw;
+  min-height: 25vh;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`
+type OfferDetailsContainerType = {
+  flex: boolean;
+  jc?: string;
+  ali?: string;
+  als?: string;
+  fDirection?: string;
+}
+const OfferDetailsContainer = styled.div`
+  flex: 1;
+  display: ${(s: OfferDetailsContainerType) => s.flex ? 'flex' : 'block'};
+  flex-direction: ${(s: OfferDetailsContainerType) => s.fDirection ? s.fDirection : 'row'};
+  justify-content: ${(s: OfferDetailsContainerType) => s.jc};
+  align-items: ${(s:OfferDetailsContainerType) => s.ali};
+  align-self: ${(s: OfferDetailsContainerType) => s.als};
+`
+const OfferImg = styled.img`
+  object-fit: cover;
+  max-width: 15vw;
+  max-height: 10vh;
+`
+const OfferHeader = styled.h1`
+  font-size: 1.5rem;
+  color: black;
+`
+const OfferP = styled.p`
+  font-size: 0.8rem;
+`
+const EachOffer = ({texts, nav, productID}: {texts: string[], nav: NavigateFunction, productID: number}) => {
+
+  return(
+    <OfferContainer>
+      <OfferDetailsContainer flex={true}>
+        <OfferImg src={texts[0]} alt={texts.slice(0, 5) + 'image'} />
+      </OfferDetailsContainer>
+      <OfferDetailsContainer fDirection='column' flex={true}>
+        <OfferHeader>
+          {texts[1]}
+        </OfferHeader>
+        <OfferP>
+          {texts[2]}
+        </OfferP>
+      </OfferDetailsContainer>
+      <OfferDetailsContainer flex={true}>
+        <OfferHeader>
+          {texts[3]}
+        </OfferHeader>
+        <OfferP>
+          {texts[4]}
+        </OfferP>
+      </OfferDetailsContainer>
+      <OfferDetailsContainer flex={true}>
+        <Button variant='contained' onClick={(e) => nav(`/Daily2/${productID}`)}>Add Subscription</Button>
+      </OfferDetailsContainer>
+    </OfferContainer>
+  )
+}
 export default function Daily2() {
-    
+    const nav = useNavigate();
   return (
     <MainSectionDaily2>
       <ContentWrapper>
@@ -81,9 +179,9 @@ export default function Daily2() {
           </TheParagraph>
         </SplitterDiv>
         <SplitterDiv fWrap='wrap' jContent='space-evenly' fDirection='row' flex={2}>
-          <OfferWrapper bShadowColor='#FFFBEC'>3</OfferWrapper>
-          <OfferWrapper bShadowColor='#f1d9fc'>3</OfferWrapper>
-          <OfferWrapper bShadowColor='#c5caf8'>3</OfferWrapper>
+          <OfferWrapper bShadowColor='#FFFBEC'><EachOffer nav={nav} texts={offersData[0].texts} productID={offersData[0].productID} key={offersData[0].productID} /></OfferWrapper>
+          <OfferWrapper bShadowColor='#f1d9fc'><EachOffer nav={nav} texts={offersData[1].texts} productID={offersData[1].productID} key={offersData[1].productID} /></OfferWrapper>
+          <OfferWrapper bShadowColor='#c5caf8'><EachOffer nav={nav} texts={offersData[2].texts} productID={offersData[2].productID} key={offersData[2].productID} /></OfferWrapper>
         </SplitterDiv>
         <SplitterDiv fDirection='row' flex={1}></SplitterDiv>
       </ContentWrapper>
