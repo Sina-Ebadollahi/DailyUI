@@ -1,6 +1,8 @@
 import { Avatar } from "@mui/material";
 import { useState } from "react";
 import styled from "styled-components";
+// auth container imports 
+import { LockOutlined, VisibilityOutlined, VisibilityOffOutlined  } from "@material-ui/icons";
 // customs
 const primaryColor = '#132B50';
 type CustomDivType = {
@@ -11,6 +13,7 @@ type CustomDivType = {
     w?: string | null;
     h?: string | null;
     fDirection?: string | null;
+    margin?: number[] | null;
 }
 const CustomDiv = styled.div`
     display: ${(s: CustomDivType) => s.d};
@@ -19,6 +22,7 @@ const CustomDiv = styled.div`
     align-items: ${(s: CustomDivType) => s.aItems};
     width: ${(s: CustomDivType) => s.w};
     height: ${(s: CustomDivType) => s.h};
+    margin: ${(s: CustomDivType) => s.margin?.map((e: number) => (`${e}px `))};
 `
 
 // components
@@ -71,7 +75,7 @@ type MainHeaderType = {
 
 }
 const MainHeader = styled.h1`
-    font-size: ${(s: MainHeaderType) => s.fz ? s.fz : 3.5}rem;
+    font-size: ${(s: MainHeaderType) => s.fz ? s.fz : 3}rem;
     color: ${primaryColor};
 `
 export default function Daily3(): JSX.Element{
@@ -101,8 +105,20 @@ export default function Daily3(): JSX.Element{
         </Daily3Section>
     )
 }
+// imports
 const AuthContainer = styled.div`
-
+    min-width: 30vw;
+    min-height: 20vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid black;
+`
+const SideSplitter = styled.div`
+    min-width: 30vw;
+    min-height: 9vh;
+    border: 2px blue solid; 
 `
 type AuthenticationPartType = {
     passwordData: string;
@@ -112,7 +128,10 @@ const AuthenticationPart = (props: AuthenticationPartType): JSX.Element => {
     
     return(
         <AuthContainer>
-
+            <SideSplitter>
+                <CustomDiv  />
+            </SideSplitter>
+            <SideSplitter></SideSplitter>
         </AuthContainer>
     )
 }
