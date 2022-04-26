@@ -119,17 +119,45 @@ const SideSplitter = styled.div`
     min-width: 30vw;
     min-height: 9vh;
     border: 2px blue solid; 
+    display: ${(s: CustomDivType) => s.d};
+    justify-content: ${(s: CustomDivType) => s.jContent};
+    align-items: ${(s: CustomDivType) => s.aItems};
+`
+const PasswordBoxContainer = styled.div`
+    margin: 1rem;
+    border: 1px ${primaryColor} solid;
+    border-radius: 4px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 6vh;
+    min-width: 60%;
+    justify-self: flex-start;
+`
+const PasswordInput = styled.input`
+all: unset;
+    flex: 3;
+    min-height: 2rem;
+    font-size: 1.5rem;  
+    margin-left: 1rem;
+
 `
 type AuthenticationPartType = {
     passwordData: string;
     setPasswordData: React.Dispatch<React.SetStateAction<string>>;
 }
 const AuthenticationPart = (props: AuthenticationPartType): JSX.Element => {
-    
+    const [isPasswordVisible, setIsPasswordVisible] = useState<boolean>(true);
     return(
         <AuthContainer>
-            <SideSplitter>
-                <CustomDiv  />
+            <SideSplitter aItems='center' jContent='center' d='flex'>
+                <PasswordBoxContainer>
+                    <LockOutlined style={{marginLeft: '1rem'}} />
+                    <PasswordInput type={isPasswordVisible ? 'text' : 'password'} onChange={(e) => props.setPasswordData(e.target.value)} />
+                </PasswordBoxContainer>
+                {isPasswordVisible && <VisibilityOutlined  onClick={() => setIsPasswordVisible(false)} />}
+                {!isPasswordVisible && <VisibilityOffOutlined onClick={() => setIsPasswordVisible(true)} />}
+                
             </SideSplitter>
             <SideSplitter></SideSplitter>
         </AuthContainer>
