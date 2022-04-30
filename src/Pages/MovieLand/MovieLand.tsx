@@ -28,7 +28,6 @@ const MainContainer = styled.div`
 `
 export default function MovieLand() {
   const currentTheme: string = useSelector((state: {themeReducer: any, locationReducer: any}) => state.themeReducer);
-  console.log(currentTheme);
   
   return (
         <RootContainer c={currentTheme}>
@@ -64,8 +63,8 @@ type MovieBaseContainerType = {
 } 
 const MovieBaseContainer = (): JSX.Element => {
   return(
-    <>
+    <MovieRootContainer>
 
-    </>
+    </MovieRootContainer>
   )
 }
