@@ -1,3 +1,4 @@
+import { useSelector } from "react-redux"
 import styled from "styled-components"
 import ThemeSwitch from "./ThemeSwitch"
 
@@ -10,11 +11,12 @@ const RootContainer = styled.section`
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: #f0eaea;
+    background-color: ${(a: {c: string}) => a.c === 'Light' ? '#f0eaea': '#504e4e'};;
 `
 const MainHeader = styled.h1`
+ color: ${(a: {c: string}) => a.c === 'Light' ? 'red': 'white'};
   font-size: 3rem;
-  color: #9c5411;
+  /* color: #9c5411; */
   letter-spacing: 0.5rem;
   justify-self: flex-start;
   margin-bottom: 10rem;
@@ -25,10 +27,13 @@ const MainContainer = styled.div`
     box-shadow: 1px 2px 4px rgba(0,0,0,0.5);
 `
 export default function MovieLand() {
+  const currentTheme: string = useSelector((state: {themeReducer: any, locationReducer: any}) => state.themeReducer);
+  console.log(currentTheme);
+  
   return (
-        <RootContainer>
-          <ThemeSwitch />
-          <MainHeader>
+        <RootContainer c={currentTheme}>
+          <ThemeSwitch jSelf={'flex-start'} />
+          <MainHeader c={currentTheme}>
             {`Movie Land :)`}
           </MainHeader>
           <MainContainer>
@@ -37,8 +42,18 @@ export default function MovieLand() {
       </RootContainer>
   )
 }
+const MovieRootContainer = styled.div`
+  min-height:20vh;
+  min-width: 65vw;
+  margin: auto;
+  display: grid;
+  grid-template-columns:repeat(3,1fr);
+  grid-gap:2rem;
+`
 const MovieContainer = styled.div`
-  
+  min-width: 20vw;
+  min-height: 15vh;
+
 `
 
 type MovieBaseContainerType = {
