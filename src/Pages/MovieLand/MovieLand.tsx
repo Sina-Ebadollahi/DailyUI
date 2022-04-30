@@ -1,4 +1,5 @@
 import styled from "styled-components"
+import ThemeSwitch from "./ThemeSwitch"
 
 
 // components
@@ -26,6 +27,7 @@ const MainContainer = styled.div`
 export default function MovieLand() {
   return (
         <RootContainer>
+          <ThemeSwitch />
           <MainHeader>
             {`Movie Land :)`}
           </MainHeader>
