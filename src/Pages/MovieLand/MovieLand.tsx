@@ -52,6 +52,17 @@ const MovieRootContainer = styled.div`
 const MovieContainer = styled.div`
   min-width: 20vw;
   min-height: 15vh;
+  position: relative;
+
+`
+const MovieBaseNameContainer = styled.div`
+  position: absolute;
+  bottom: 0;
+  min-height: 20%;
+  min-width: max-content;
+  opacity: 0.6;
+  $:
+
 
 `
 
@@ -61,10 +72,22 @@ type MovieBaseContainerType = {
   id: string | null;
   genres: string[] | null;
 } 
-const MovieBaseContainer = (): JSX.Element => {
+const MovieBaseImage = styled.image`
+  background-image: url(${(a: {imgUrl: string | null | undefined}) => a.imgUrl});
+  background-repeat: no-repeat;
+  background-size: cover;
+  
+`
+const MovieBaseContainer = (s: MovieBaseContainerType[]): JSX.Element => {
   return(
     <MovieRootContainer>
-
+      {s.map((each) => {
+        return(
+          <MovieContainer>
+            <MovieBaseImage imgUrl={each.imgUrl} />
+          </MovieContainer>
+        )
+      })}
     </MovieRootContainer>
   )
 }
