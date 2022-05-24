@@ -31,8 +31,8 @@ export default function MovieLand() {
   const currentTheme: string = useSelector((state: {themeReducer: any, locationReducer: any}) => state.themeReducer);
   const { fetchFunction } = useFetch();
   
-  const theMovieDBUrl = `https://api.themoviedb.org/3/movie/550?api_key=190df901aa6f0274c9a8651e8e8e7c46${}`
-  const fetchedData = fetchFunction()
+  // const theMovieDBUrl = `https://api.themoviedb.org/3/movie/550?api_key=190df901aa6f0274c9a8651e8e8e7c46${}`
+  // const fetchedData = fetchFunction()
 
   return (
         <RootContainer c={currentTheme}>
