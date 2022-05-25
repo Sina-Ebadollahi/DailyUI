@@ -8,7 +8,7 @@ import Daily2 from './Pages/Daily2/Daily2';
 import Daily3 from './Pages/Daily3/Daily3';
 import MovieLand from './Pages/MovieLand/MovieLand';
 import PizzaLand from './Pages/PizzaLand/PizzaLand';
-
+import BootstrapTest from './Pages/BootstrapTest/BootstrapTest'
 
 function App() {
   // get ip
@@ -24,6 +24,7 @@ function App() {
           <Route path='/Daily3' element={<Daily3 />}/>
           <Route path='/MovieLand' element={<MovieLand />}/>
           <Route path='/PizzaLand' element={<PizzaLand />} />
+          <Route path='BootstrapTest' element={<BootstrapTest />} /> 
           <Route path="*"  element={<NotFound />}/>
         </Routes>
       </Router>
