@@ -21,20 +21,20 @@ export default function PizzaLand() {
       <MainContainer>
           <IntroWrapper>
             <IntroFunction />
-          </IntroWrapper>
           <PizzaCard />
+          </IntroWrapper>
       </MainContainer>
   )
 }
 const BackgroundContainer = styled.div`
-height: 60vh;
+min-height: 60vh;
 position: relative;
   background-repeat: no-repeat;
 `
 const BackgroundImage = styled.img`
 opacity: 0.7;
 width: 100%;
-height: 100%;
+max-height: 60vh;
   object-fit: cover;
 `
 const PizzaTextContainer = styled.div`
@@ -47,6 +47,10 @@ const PizzaTextContainer = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  padding-right: 2rem;
+  opacity: 0.8;
+  border-right: 2px solid yellow;
+  border-bottom: 2px solid yellow;
 `
 const PizzaHeader = styled.h2`
   font-size: 4.5rem;
@@ -95,19 +99,44 @@ const PizzaCardWrapper = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  &:hover{
+  border: 2px solid #dbd807;
+  /* &:hover{
     padding: 8rem;
-  }
+  } */
 `
 const PizzaCardImage = styled.img`
-  object-fit: fill;
-  max-width: 80%;
-  max-height: 40%;
+  object-fit: cover;
+  max-width: 10vw;
+  max-height: 30vh;
   
 
 `
-
-
+const PizzaCardHeader = styled.h1`
+  letter-spacing: 0.09rem;
+  color: #b90606;
+  font-size: 2rem;
+`
+type PizzaWrapperType = {
+  mh?: string;
+  mw?: string;
+  minW: string;
+  minH: string;
+  isFlex: boolean;
+}
+const PizzaWrapper = styled.div`
+  max-height: ${(s: PizzaWrapperType) => s.mh};
+  max-width: ${(s: PizzaWrapperType) => s.mw};
+  min-height: 
+  ${(s: PizzaWrapperType) => {
+    if(s.isFlex){
+      return`
+        display: flex;
+        justify-conent: center;
+        align-items: center
+      `
+    }
+  }};
+`
 
 
 
@@ -121,6 +150,10 @@ const PizzaCard = (): JSX.Element => {
         if(i > 0){
           return(
             <PizzaCardWrapper>
+              <PizzaWrapper minH='30vh' minW='20vw' isFlex={true} mh='30vh' mw='20vw'>
+              <PizzaCardHeader>{e.productName}</PizzaCardHeader>
+
+              </PizzaWrapper>
               <PizzaCardImage src={e.img}  />
             </PizzaCardWrapper>
           )
