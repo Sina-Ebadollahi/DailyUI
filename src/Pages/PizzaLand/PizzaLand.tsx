@@ -94,7 +94,7 @@ const PizzaCardContainer = styled.div`
 `
 const PizzaCardWrapper = styled.div`
   min-height: 80%;
-  min-width: 20%;
+  min-width: 20vw;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -108,13 +108,14 @@ const PizzaCardImage = styled.img`
   object-fit: cover;
   max-width: 10vw;
   max-height: 30vh;
-  
+  border-radius: 70%;
 
 `
 const PizzaCardHeader = styled.h1`
   letter-spacing: 0.09rem;
   color: #b90606;
   font-size: 2rem;
+
 `
 type PizzaWrapperType = {
   mh?: string;
@@ -122,8 +123,10 @@ type PizzaWrapperType = {
   minW: string;
   minH: string;
   isFlex: boolean;
+  bgImg?: string;
 }
 const PizzaWrapper = styled.div`
+  background-image: url(${(s: PizzaWrapperType) => s.bgImg});
   max-height: ${(s: PizzaWrapperType) => s.mh};
   max-width: ${(s: PizzaWrapperType) => s.mw};
   min-height: 
@@ -136,6 +139,15 @@ const PizzaWrapper = styled.div`
       `
     }
   }};
+  position: relative;
+`
+const PizzaFireImage = styled.img`
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+  position:absolute;
+  left:0;
+  top:0;
 `
 
 
@@ -150,7 +162,8 @@ const PizzaCard = (): JSX.Element => {
         if(i > 0){
           return(
             <PizzaCardWrapper>
-              <PizzaWrapper minH='30vh' minW='20vw' isFlex={true} mh='30vh' mw='20vw'>
+              <PizzaWrapper   minH='30vh' minW='20vw' isFlex={true} mh='30vh' mw='20vw'>
+                <PizzaFireImage src='https://media.istockphoto.com/photos/fire-isolated-over-black-background-picture-id113494458?k=20&m=113494458&s=612x612&w=0&h=xwIXuOUwLSqGiOHMS-byry1NeuH99Z7GBrkfl70Sxvg=' />
               <PizzaCardHeader>{e.productName}</PizzaCardHeader>
 
               </PizzaWrapper>
