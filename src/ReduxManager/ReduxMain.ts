@@ -43,16 +43,26 @@ const locationReducer = (state: locationReducerStateType = locationReducerState 
             return state;
     }
 }
+// auth reducer info
+let authInfoReducerState = {
+    userID: 1,
+    userName: "",
+    isAdmin: false,
+    other: null,
+}
 export type authInfoReducerType = {
     userID: number | null;
-    userName: number | null;
+    userName: string | null;
     isAdmin: boolean | null;
     other: object | null;
 }
 
-const authInfoReducer = (state: authInfoReducerType, action: Action): any => {
+const authInfoReducer = (state: authInfoReducerType = authInfoReducerState, action: Action): any => {
     switch(action.type){
-
+        case "LOG_IN":
+            return {
+                ...state
+            }
         default:
             return state;
     }

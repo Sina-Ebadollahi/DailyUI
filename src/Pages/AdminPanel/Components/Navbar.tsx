@@ -5,7 +5,7 @@ import {Dropdown} from 'react-bootstrap'
 import { authInfoReducerType } from "../../../ReduxManager/ReduxMain"
 //
 const NavbarContainer = styled.div`
-    min-height
+    /* min-height */
 `
 
 export default function Navbar({authInfo} : {authInfo : authInfoReducerType}) {
