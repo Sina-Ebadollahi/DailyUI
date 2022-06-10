@@ -9,7 +9,8 @@ import Daily3 from './Pages/Daily3/Daily3';
 import MovieLand from './Pages/MovieLand/MovieLand';
 import PizzaLand from './Pages/PizzaLand/PizzaLand';
 import BootstrapTest from './Pages/BootstrapTest/BootstrapTest'
-
+import AdminPanel from './Pages/AdminPanel/index';
+import LoginForm from './Pages/AdminPanel/Components/LoginForm';
 function App() {
   // get ip
   IPUtility();
@@ -25,6 +26,8 @@ function App() {
           <Route path='/MovieLand' element={<MovieLand />}/>
           <Route path='/PizzaLand' element={<PizzaLand />} />
           <Route path='BootstrapTest' element={<BootstrapTest />} /> 
+          <Route path='/Admin' element={<AdminPanel />} />
+          <Route path='/Admin/Login' element={<LoginForm />} />
           <Route path="*"  element={<NotFound />}/>
         </Routes>
       </Router>

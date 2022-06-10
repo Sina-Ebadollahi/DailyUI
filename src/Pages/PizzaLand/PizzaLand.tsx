@@ -58,6 +58,9 @@ color: white;
   text-align: center;
   line-height: 3rem;
   text-shadow: 2px 4px 2px black;
+  @media screen and (max-width: 720px) {
+    font-size: 3.6rem;
+  }
 `
 const PizzaParagraph = styled.p`
 margin-top: 2rem;
@@ -115,7 +118,9 @@ const PizzaCardHeader = styled.h1`
   letter-spacing: 0.09rem;
   color: #b90606;
   font-size: 2rem;
-
+  @media screen and (max-width: 720px) {
+    line-height: 2rem;
+  }
 `
 type PizzaWrapperType = {
   mh?: string;

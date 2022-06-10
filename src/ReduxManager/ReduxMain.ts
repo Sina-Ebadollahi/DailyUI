@@ -20,7 +20,7 @@ let locationReducerState = {
     isRedirected: false,
     ipData: null,
 }
-type locationReducerStateType = {
+export type locationReducerStateType = {
     currentAddress: string | null,
     pastPageAddress: string | null,
     isRedirected: boolean,
@@ -43,15 +43,29 @@ const locationReducer = (state: locationReducerStateType = locationReducerState 
             return state;
     }
 }
+export type authInfoReducerType = {
+    userID: number | null;
+    userName: number | null;
+    isAdmin: boolean | null;
+    other: object | null;
+}
 
+const authInfoReducer = (state: authInfoReducerType, action: Action): any => {
+    switch(action.type){
+
+        default:
+            return state;
+    }
+}
 
 
 
 // combining reducers
-const combinedReducersList = combineReducers({themeReducer, locationReducer})
+const combinedReducersList = combineReducers({themeReducer, locationReducer, authInfoReducer})
 // root reducer
 export const rootReducer = createStore(combinedReducersList);
 export type rootListType = {
     themeReducer: any,
-    locationReducer: any
+    locationReducer: any,
+    authInfoReducer: any,
 }
