@@ -14,7 +14,7 @@ export default function AdminPanel() {
     <>
 {    authInfo.isAdmin ? (<section className="main-area">
       <Navbar authInfo={authInfo} />
-    </section>) : (nav('/Login'))
+    </section>) : (nav('/Admin/Login'))
 }    </>
     
   )

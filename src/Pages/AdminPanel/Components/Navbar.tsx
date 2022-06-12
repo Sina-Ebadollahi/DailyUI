@@ -1,5 +1,4 @@
 import styled from "styled-components"
-import {Dropdown} from 'react-bootstrap'
 
 //types
 import { authInfoReducerType } from "../../../ReduxManager/ReduxMain"
