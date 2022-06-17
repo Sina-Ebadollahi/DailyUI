@@ -7,7 +7,7 @@ const NavbarContainer = styled.div`
     /* min-height */
 `
 
-export default function Navbar({authInfo} : {authInfo : authInfoReducerType}) {
+export default function Sidebar({authInfo} : {authInfo : authInfoReducerType}) {
   return (
     <div>Navbar</div>
   )
