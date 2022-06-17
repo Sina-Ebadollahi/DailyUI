@@ -1,6 +1,6 @@
 import "./style.scss";
 // components
-import Navbar from "./Components/Navbar";
+import Sidebar from "./Components/Sidebar";
 // hooks
 import { useSelector } from "react-redux";
 
@@ -17,13 +17,16 @@ export default function AdminPanel() {
   const nav = useNavigate();
   return (
     <>
-      {authInfo.isAdmin ? (
+      <section className="main-area">
+        <Sidebar authInfo={authInfo} />
+      </section>
+      {/* {authInfo.isAdmin ? (
         <section className="main-area">
-          <Navbar authInfo={authInfo} />
+          <Sidebar authInfo={authInfo} />
         </section>
       ) : (
         nav("/Admin/Login")
-      )}
+      )} */}
     </>
   );
 }

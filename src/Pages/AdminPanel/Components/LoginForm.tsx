@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Container, Form, Button } from "react-bootstrap";
+import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import useFetch from "../../../Hooks/useFetch";
 export default function LoginForm() {
@@ -8,13 +9,18 @@ export default function LoginForm() {
   const [password, setPassword] = useState<string | null>("");
   const [isAuth, setIsAuth] = useState<boolean>(false);
   const [buttonClicked, setButtonClicked] = useState<boolean>(false);
+  const [authData, setAuthData] = useState<object>({});
   const f = useFetch();
   const nav = useNavigate();
+  const dispatch = useDispatch();
   useEffect(() => {
+    if (isAuth) {
+      dispatch({ type: "LOG_IN", payload: authData });
+
+      nav("/Admin");
+    }
+
     return () => {
-      if (isAuth) {
-        nav("/Admin");
-      }
       setTimeout(() => {
         setError("");
       }, 3000);
@@ -25,14 +31,15 @@ export default function LoginForm() {
   ) => {
     e.preventDefault();
     if (emailAddress && password) {
-      let reqUrl = `localhost:3004/data?user=${emailAddress}&password=${password}`;
-      const jsonData: any = f.fetchFunction(reqUrl, "GET");
+      let reqUrl = `localhost:3003/data?user=${emailAddress}&password=${password}`;
+      const jsonData: object = f.fetchFunction(reqUrl, "GET");
       let temp = {
         user: "Sina",
         password: "temp123",
       };
-      if (jsonData.includes("temp123")) {
+      if (jsonData === { emailAddress, password }) {
         setIsAuth(true);
+        setAuthData(jsonData);
       }
     }
   };
