@@ -67,15 +67,29 @@ const authInfoReducer = (state: authInfoReducerType = authInfoReducerState, acti
             return state;
     }
 }
-
-
+type windowSizeReducerType = {
+    width: number;
+    height: number;
+}
+const windowSizeReducer = (state: windowSizeReducerType = {width: window.outerWidth, height: window.outerHeight}, action: Action) => {
+    switch(action.type){
+        case 'CHANGE_WINDOW_SIZE':
+            return {
+                width: action.payload.width,
+                height: action.payload.height
+            }
+        default:
+            return state;    
+    }
+}
 
 // combining reducers
-const combinedReducersList = combineReducers({themeReducer, locationReducer, authInfoReducer})
+const combinedReducersList = combineReducers({themeReducer, locationReducer, authInfoReducer, windowSizeReducer})
 // root reducer
 export const rootReducer = createStore(combinedReducersList);
 export type rootListType = {
     themeReducer: any,
     locationReducer: any,
     authInfoReducer: any,
+    windowSizeReducer: any
 }
