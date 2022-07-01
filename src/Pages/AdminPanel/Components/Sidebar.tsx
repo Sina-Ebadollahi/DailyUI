@@ -51,6 +51,18 @@ const SidebarSeprator = styled.div`
   align-items: center;
   border-bottom: 2px solid blue;
   margin: 1rem;
+  &:hover {
+    animation: hoverAnim 1s forwards;
+  }
+  @keyframes hoverAnim {
+    0% {
+      background: #4e4d4d;
+    }
+    100% {
+      background: #6b6969;
+    }
+  }
+  cursor: pointer;
 `;
 const SidebarSingleHeader = styled.h2`
   font-size: 1rem;
