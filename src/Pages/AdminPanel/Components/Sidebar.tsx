@@ -15,7 +15,7 @@ const SidebarContainer = styled.div`
   max-width: 15vw;
   display: flex;
   flex-direction: column;
-  background: #4e4d4d;
+  background: #706f6f;
 `;
 
 export default function Sidebar({
@@ -56,10 +56,10 @@ const SidebarSeprator = styled.div`
   }
   @keyframes hoverAnim {
     0% {
-      background: #4e4d4d;
+      background: #696868;
     }
     100% {
-      background: #6b6969;
+      background: #949090;
     }
   }
   cursor: pointer;
