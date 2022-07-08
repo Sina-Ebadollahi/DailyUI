@@ -11,7 +11,7 @@ import PizzaLand from "./Pages/PizzaLand/PizzaLand";
 import BootstrapTest from "./Pages/BootstrapTest/BootstrapTest";
 import AdminPanel from "./Pages/AdminPanel/index";
 import LoginForm from "./Pages/AdminPanel/Components/LoginForm";
-import Weather from "./Pages/Weather/index";
+import WeatherIndex from "./Pages/Weather/index";
 import { useDispatch } from "react-redux";
 import { useEffect } from "react";
 function App() {
@@ -40,7 +40,7 @@ function App() {
           <Route path="BootstrapTest" element={<BootstrapTest />} />
           <Route path="/Admin" element={<AdminPanel />} />
           <Route path="/Admin/Login" element={<LoginForm />} />
-          <Route path="/Weather" element={<Weather />} />
+          {/* <Route path="/Weather" element={<WeatherIndex />} /> */}
           <Route path="*" element={<NotFound />} />
         </Routes>
       </Router>

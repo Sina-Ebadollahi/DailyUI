@@ -18,13 +18,13 @@ let locationReducerState = {
     currentAddress: null,
     pastPageAddress: null,
     isRedirected: false,
-    ipData: null,
+    ipData: { ip: ""},
 }
 export type locationReducerStateType = {
     currentAddress: string | null,
     pastPageAddress: string | null,
     isRedirected: boolean,
-    ipData: object | null,
+    ipData: {ip: string},
 }
 const locationReducer = (state: locationReducerStateType = locationReducerState , action: Action ): any => {
     switch(action.type){
