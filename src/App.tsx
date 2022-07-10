@@ -14,6 +14,8 @@ import LoginForm from "./Pages/AdminPanel/Components/LoginForm";
 import WeatherIndex from "./Pages/Weather/index";
 import { useDispatch } from "react-redux";
 import { useEffect } from "react";
+import Calculator from "./Pages/BinaryCalculator/Calculator";
+import Home from "./Pages/Home/Home";
 function App() {
   // get ip
   IPUtility();
@@ -32,14 +34,16 @@ function App() {
     <div className="App">
       <Router>
         <Routes>
+          <Route path="/" element={<Home />} />
           <Route path="/Daily1" element={<Daily1 />} />
-          <Route path="Daily2" element={<Daily2 />} />
+          <Route path="/Daily2" element={<Daily2 />} />
           <Route path="/Daily3" element={<Daily3 />} />
           <Route path="/MovieLand" element={<MovieLand />} />
           <Route path="/PizzaLand" element={<PizzaLand />} />
-          <Route path="BootstrapTest" element={<BootstrapTest />} />
+          <Route path="/BootstrapTest" element={<BootstrapTest />} />
           <Route path="/Admin" element={<AdminPanel />} />
           <Route path="/Admin/Login" element={<LoginForm />} />
+          <Route path="/BinaryCalculator" element={<Calculator />} />
           {/* <Route path="/Weather" element={<WeatherIndex />} /> */}
           <Route path="*" element={<NotFound />} />
         </Routes>
